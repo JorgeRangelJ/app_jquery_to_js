@@ -1,12 +1,21 @@
 console.log('hola mundo!');
-const noCambia = "Leonidas";
 
-let cambia = "@LeonidasEsteban"
+// ES5 var
+// ES6 let y const
 
+const noCambia = "Jorge Rangel";
+let cambia = "@JorgeRangel"
+
+// Crear funcion en Js
 function cambiarNombre(nuevoNombre) {
   cambia = nuevoNombre
 }
 
+
+
+
+
+// Crear una promesa en Js
 const getUserAll = new Promise(function(todoBien, todoMal) {
   // llamar a un api
   setTimeout(function() {
@@ -31,6 +40,20 @@ const getUser = new Promise(function(todoBien, todoMal) {
 //     console.log(message)
 //   })
 
+// Promesa para muchas peticiones muchas promesas
+Promise.all([
+  getUser,
+  getUserAll
+])
+
+.then(function(message){
+  console.log(message)
+})
+.catch(function(message){
+  console.log(message)
+})
+
+// Carrera de promesas
 Promise.race([
   getUser,
   getUserAll,
@@ -43,9 +66,12 @@ Promise.race([
 })
 
 
-// ajax = XHLHttpRequest
 
-$.ajax('https://randomuser.me/apiKKK/', {
+
+
+
+// jquery  javascript solicitar datos de un servidor ajax = XHLHttpRequest
+$.ajax('https://randomuser.me/api/', {
   method:'get',
   success: function(data){
     console.log(data)
@@ -58,13 +84,13 @@ $.ajax('https://randomuser.me/apiKKK/', {
 // javascript solicitar datos de un servidor
 
 //retorna una promesa
-fetch('https://randomuser.men/api/')
+fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un servidor 
   .then(function(response){
-    console.log(response)
-    return response.json()
+    // console.log(response)
+    return response.json() // Respuest viene en json y una promesa puede devolver una promesa
   }) 
   .then(function(user){
-    console.log('user', user.results[0].name.first)
+    console.log('user', user.results[0].name.first) 
   })
   .catch(function(){
     console.log('algo fallo')
