@@ -129,8 +129,13 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
 
     //videoItemTemplate()
 
+    const $actionContainer = document.querySelector('#action')
+
     actionList.data.movies.forEach((movie) => {
       const HTMLString = videoItemTemplate(movie);
+      const html = document.implementation.createHTMLDocument();
+      html.body.innerHTML = HTMLString;
+      $actionContainer.append(html.body.children[0])
       console.log(HTMLString);
     });
 
@@ -140,7 +145,7 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     // Selectores JavaScript
 
     // Selectores para los contenedores de las peliculas
-    const $actionContainer = document.querySelector('#action')
+    
     const $dramaContainer = document.getElementById('#drama')
     const $animationContainer = document.getElementById('#animation')
 
