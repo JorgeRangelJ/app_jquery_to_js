@@ -109,8 +109,11 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     }
 
     const $form = document.getElementById('form')
+    const $home = document.getElementById('home')
+
     $form.addEventListener('submit', (event) => {
-      event.preventDefault()
+      event.preventDefault();
+      $home.classList.add('search-active')
     })
 
     const actionList = await getData('https://yts.am/api/v2/list_movies.json?genre=action')
@@ -141,7 +144,7 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     function addEventClick ($element) {
 
       $element.addEventListener('click', () => {
-        alert('click')
+        showModal()
       })
     }
     
@@ -173,8 +176,7 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     const $featuringContainer = document.getElementById('#featuring')
 
 
-    // Selector para el home
-    const $home = document.getElementById('#home')
+    
 
     // Selectores para el modal
     const $modal = document.getElementById('modal');
@@ -185,6 +187,17 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     const $modalImage = $modal.querySelector('img')
     const $modalDescription = $modal.querySelector('p')
 
+    function showModal() {
+      $overlay.classList.add('active');
+      $modal.style.animation = 'modalIn .8s forwards';
+    }
+
+    $hideModal.addEventListener('click', hideModal)
+    
+    function hideModal() {
+      $overlay.classList.remove('active');
+      $modal.style.animation = 'modalOut .8s forwards';
+    }
 
   })()
 
