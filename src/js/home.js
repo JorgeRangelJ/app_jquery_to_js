@@ -94,4 +94,23 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
   })
   .catch(function(){
     console.log('algo fallo')
-  })
+  });
+
+
+
+  // Funciones asincronas
+  (async function load() { // async se usa para crear funciones asincronas
+      // await  Para esperar las peticiones del API
+
+     async function getData(url) {
+      const response = await fetch(url)
+      const data = await response.json()
+      return data;
+    }
+
+    const actionList = await getData('https://yts.am/api/v2/list_movies.json?genre=action')
+    const dramaList = await getData('https://yts.am/api/v2/list_movies.json?genre=drama')
+    const animationList = await getData('https://yts.am/api/v2/list_movies.json?genre=animation')
+    console.log(actionList, dramaList, animationList)
+  })()
+
