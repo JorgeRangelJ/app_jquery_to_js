@@ -113,6 +113,27 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     const animationList = await getData('https://yts.am/api/v2/list_movies.json?genre=animation')
     console.log(actionList, dramaList, animationList)
 
+    // templates
+    function videoItemTemplate(movie) {
+      return (
+        `<div class="primaryPlaylistItem">
+          <div class="primaryPlaylistItem-image">
+            <img src="${movie.medium_cover_image}">
+          </div>
+          <h4 class="primaryPlaylistItem-title">
+            ${movie.title}
+          </h4>
+        </div>`
+      )
+    }
+
+    //videoItemTemplate()
+
+    actionList.data.movies.forEach((movie) => {
+      const HTMLString = videoItemTemplate(movie);
+      console.log(HTMLString);
+    });
+
     // Selectores Jquery
     // const $home = $('.home')
 
@@ -140,6 +161,7 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     const $modalTitle = $modal.querySelector('h1')
     const $modalImage = $modal.querySelector('img')
     const $modalDescription = $modal.querySelector('p')
+
 
   })()
 
