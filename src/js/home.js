@@ -127,27 +127,34 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
       )
     }
 
-    //videoItemTemplate()
-
-    const $actionContainer = document.querySelector('#action')
-
-    actionList.data.movies.forEach((movie) => {
-      const HTMLString = videoItemTemplate(movie);
+    function createTemplate(HTMLString) {
       const html = document.implementation.createHTMLDocument();
       html.body.innerHTML = HTMLString;
-      $actionContainer.append(html.body.children[0])
-      console.log(HTMLString);
-    });
-
-    // Selectores Jquery
-    // const $home = $('.home')
-
-    // Selectores JavaScript
-
-    // Selectores para los contenedores de las peliculas
+      return html.body.children[0];
+    }
     
-    const $dramaContainer = document.getElementById('#drama')
-    const $animationContainer = document.getElementById('#animation')
+    function renderMovieList(list, $container) {
+      // actionList.data.movies
+      $container.children[0].remove();
+      list.forEach((movie) => {
+        const HTMLString = videoItemTemplate(movie);
+        const movieElement = createTemplate(HTMLString)
+        $container.append(movieElement)
+      });
+    }
+
+
+
+    const $actionContainer = document.querySelector('#action')
+    renderMovieList(actionList.data.movies, $actionContainer)
+    
+    const $dramaContainer = document.getElementById('drama')
+    renderMovieList(dramaList.data.movies, $dramaContainer)
+
+    const $animationContainer = document.getElementById('animation')
+    renderMovieList(animationList.data.movies, $animationContainer)
+
+
 
     // Selector para los featuring
     const $featuringContainer = document.getElementById('#featuring')
