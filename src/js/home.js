@@ -112,5 +112,34 @@ fetch('https://randomuser.me/api/') // fectch Se usa para pedir datos de un serv
     const dramaList = await getData('https://yts.am/api/v2/list_movies.json?genre=drama')
     const animationList = await getData('https://yts.am/api/v2/list_movies.json?genre=animation')
     console.log(actionList, dramaList, animationList)
+
+    // Selectores Jquery
+    // const $home = $('.home')
+
+    // Selectores JavaScript
+
+    // Selectores para los contenedores de las peliculas
+    const $actionContainer = document.querySelector('#action')
+    const $dramaContainer = document.getElementById('#drama')
+    const $animationContainer = document.getElementById('#animation')
+
+    // Selector para los featuring
+    const $featuringContainer = document.getElementById('#featuring')
+
+    // Selector para el formulario
+    const $form = document.getElementById('#form')
+
+    // Selector para el home
+    const $home = document.getElementById('#home')
+
+    // Selectores para el modal
+    const $modal = document.getElementById('modal');
+    const $overlay = document.getElementById('overlay');
+    const $hideModal = document.getElementById('hide-modal');
+
+    const $modalTitle = $modal.querySelector('h1')
+    const $modalImage = $modal.querySelector('img')
+    const $modalDescription = $modal.querySelector('p')
+
   })()
 
